@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    {% load static %}
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@100;200;300;400;500;600;700;800;900&display=swap"
+          rel="stylesheet">
+
+    <title>Scholar - Online School HTML5 Template</title>
+
+
+    <link href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}" rel="stylesheet">
+
+
+    <link rel="stylesheet" href="{% static 'assets/css/fontawesome.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/templatemo-scholar.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/owl.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/css/animate.css' %}">
+    <link rel="stylesheet" href="https://unpkg.com/swiper@7/swiper-bundle.min.css"/>
+
+</head>
+
+<body>
+
+
+<div id="js-preloader" class="js-preloader">
+    <div class="preloader-inner">
+        <span class="dot"></span>
+        <div class="dots">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+    </div>
+</div>
+
+<header class="header-area header-sticky">
+    <div class="container">
+        <div class="row">
+            <div class="col-12">
+                <nav class="main-nav" >
+
+                    {% for company in company %}
+                    <a href="index.html" class="logo">
+                        <img style="margin: -10px; height: 70px; width: 300px" src="{{ company.logo.url }}" alt="">
+                    </a>
+                    {% endfor %}
+
+                    <ul class="nav">
+                        <li class="scroll-to-section"><a href="#top" class="active">Home</a></li>
+                        <li class="scroll-to-section"><a href="#services">Services</a></li>
+                        <li class="scroll-to-section"><a href="#team">Team</a></li>
+                        <li class="scroll-to-section"><a href="#contact">Contact</a></li>
+                    </ul>
+                    <a class='menu-trigger'>
+                        <span>Menu</span>
+                    </a>
+
+                </nav>
+            </div>
+        </div>
+    </div>
+</header>
+
+
+<div class="main-banner" id="top">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-12">
+                <div class="owl-carousel owl-banner">
+                    {% for banner in banner %}
+                    <div class="item item-1" style="background-image: url('{{ banner.image.url }}')">
+                        <div class="header-text">
+                            <span class="category">{{ banner.tag}}</span>
+                            <h2>{{banner.head}}</h2>
+                            <p style="background-color: black; border-radius: 10px; padding: 2px;">{{ banner.paragraph }}</p>
+                            <div style="opacity: 0;" class="buttons">
+
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="services section" id="services">
+    <div class="container">
+        <div class="row">
+                {% for service in service%}
+
+            <div class="col-lg-4 col-md-6">
+                <div class="service-item">
+                    <div style="width: 150px; height: 150px; margin-top: 40px" class="icon">
+                        <img style="border-radius: 50px; margin-bottom: 40px" src="{{ service.icon.url }}" alt="online degrees">
+                    </div>
+                    <div class="main-content">
+                        <h4>{{ service.name }}</h4>
+                        <p>{{ service.paragraph }}</p>
+
+                    </div>
+                </div>
+            </div>
+                {% endfor %}
+
+
+        </div>
+    </div>
+</div>
+
+<div class="section about-us">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6 offset-lg-1">
+                <div style="" class="accordion" id="accordionExample">
+                    <h1 style="color: white;">About us</h1>
+                </div>
+            </div>
+            <div class="col-lg-5 align-self-center">
+                <div class="section-heading">
+                    {% for about in about%}
+                    <h6>About Us</h6>
+                    <h2>{{ about.title }}</h2>
+                    <p>{{about.paragraph}}</p>
+                    <div class="main-button">
+                        <a href="#">Discover More</a>
+                    </div>
+                    {% endfor  %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+
+<div class="team section" id="team">
+    <div class="container">
+        <div class="row">
+            {% for worker in worker  %}
+            <div class="col-lg-3 col-md-6">
+                <div class="team-member">
+                    <div class="main-content">
+                        <img style=" width: 220px; height: 220px; object-fit: cover" src="{{ worker.image.url}}" alt="">
+                        <span class="category">{{ worker.position }}</span>
+                        <h4>{{ worker.full_name }}</h4>
+                        <ul class="social-icons">
+                            <li><a href="{{ worker.facebook }}"><i class="fab fa-facebook"></i></a></li>
+                            <li><a href="{{ worker.twinter }}"><i class="fab fa-twitter"></i></a></li>
+                            <li><a href="{{ worker.linkedin }}"><i class="fab fa-linkedin"></i></a></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+            {%  endfor %}
+
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+
+
+
+<div class="contact-us section" id="contact">
+    <div class="container">
+        {% for company in company %}
+        <div class="row">
+            <div class="col-lg-6  align-self-center">
+                <div class="section-heading">
+                    <h6>Contact Us</h6>
+                    <h2>Feel free to contact us anytime</h2>
+                    <p>{{ company.paragraph }}</p>
+
+                </div>
+            </div>
+            <div class="col-lg-6">
+                <div class="contact-us-content">
+                    <h2 style="color: white;margin: 10px 0px"> {{company.address }}</h2>
+
+                    <a href="tel:+998905656969"><h1 style="color: white">{{ company.phone }}</h1></a>
+                </div>
+            </div>
+        </div>
+        {% endfor  %}
+    </div>
+</div>
+
+<footer>
+    <div class="container">
+        <div class="col-lg-12">
+            <p>Copyright © 2036 Scholar Organization. All rights reserved. &nbsp;&nbsp;&nbsp; Design: <a
+                    href="https://templatemo.com" rel="nofollow" target="_blank">TemplateMo</a> Distribution: <a
+                    href="https://themewagon.com" rel="nofollow" target="_blank">ThemeWagon</a></p>
+        </div>
+    </div>
+</footer>
+
+<!-- Scripts -->
+<!-- Bootstrap core JavaScript -->
+<script src="{% static 'vendor/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'vendor/bootstrap/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'assets/js/isotope.min.js' %}"></script>
+<script src="{% static 'assets/js/owl-carousel.js' %}"></script>
+<script src="{% static 'assets/js/counter.js' %}"></script>
+<script src="{% static 'assets/js/custom.js' %}"></script>
+
+
+</body>
+</html>
